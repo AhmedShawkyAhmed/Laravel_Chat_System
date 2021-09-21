@@ -17,7 +17,7 @@ class CreateConversationsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->uuid('uuid')->unique();
-            $table->foreignId('user_id')->constrained()->casecadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamp('last_message_at')->nullable();
             $table->timestamps();
         });
