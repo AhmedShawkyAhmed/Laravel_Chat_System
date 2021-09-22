@@ -11,12 +11,17 @@ class Message extends Model
 
     protected $guarded = [];
 
+    public function isOwn()
+    {
+        return $this->user_id == auth()->id();
+    }
+
     public function conversation()
     {
         return $this->belongsTo(Conversation::class);
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

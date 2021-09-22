@@ -20,11 +20,15 @@ class Conversation extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)
+            ->withPivot('read_at')
+            ->withTimestamps()
+            ->oldest();
     }
 
     public function messages()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class)
+            ->oldest();
     }
 }
